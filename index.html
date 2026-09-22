@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLORES AMARILLAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Fuente -->
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive; /* Cambiar fuente */
+            background-color: #fff8dc;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #ffcc00;
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: none; /* Ocultar el título al principio */
+            animation: fadeIn 1s forwards;
+            
+        }
+
+        h2{
+            font-size: 1,9em;
+            margin-bottom: 5px;
+            display: none; /* Ocultar el título al principio */
+    
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #4b3832;
+            display: none; /* Ocultar el texto al principio */
+            animation: fadeIn 1.5s forwards;
+        }
+
+        /* Estilos del botón */
+        #showFlowerBtn {
+            background-color: #ffcc00;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #showFlowerBtn:hover {
+            background-color: black;
+            transform: scale(1.1);
+        }
+
+        .sunflower {
+            position: relative;
+            display: inline-block;
+            margin: 150px auto;
+            width: 0; /* Comienza pequeño */
+            height: 0; /* Comienza pequeño */
+            transition: width 3s ease-in-out, height 3s ease-in-out;
+            animation: sway 4s ease-in-out infinite;
+            z-index: 1; /* Asegurarse que la flor esté encima */
+            display: none; /* Ocultar la flor al principio */
+        }
+
+        /* Pétalos grandes */
+        .petal {
+            position: absolute;
+            width: 100px;
+            height: 160px;
+            background-color: #ffcc00;
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            position: relative; /* Mantener el contexto */
+            z-index: 2; /* Colocar por encima de la flor */
+        }
+
+        .image-container img {
+            width: 30%;
+            margin: 0 10px;
+            border-radius: 10px;
+            display: none; /* Ocultar las imágenes al principio */
+            opacity: 1; /* Asegurarse de que sean opacas */
+            position: relative; /* Asegurar que se respete el z-index */
+            z-index: 2; /* Colocar por encima de la flor */
+        }
+
+        /* Colocar los pétalos alrededor del centro */
+        .petal:nth-child(1)  { transform: rotate(0deg); top: 0px; left: 120px; }
+        .petal:nth-child(2)  { transform: rotate(30deg); top: 25px; left: 180px; }
+        .petal:nth-child(3)  { transform: rotate(60deg); top: 60px; left: 220px; }
+        .petal:nth-child(4)  { transform: rotate(90deg); top: 100px; left: 240px; }
+        .petal:nth-child(5)  { transform: rotate(120deg); top: 150px; left: 220px; }
+        .petal:nth-child(6)  { transform: rotate(150deg); top: 200px; left: 180px; }
+        .petal:nth-child(7)  { transform: rotate(180deg); top: 220px; left: 120px; }
+        .petal:nth-child(8)  { transform: rotate(210deg); top: 200px; left: 60px; }
+        .petal:nth-child(9)  { transform: rotate(240deg); top: 150px; left: 20px; }
+        .petal:nth-child(10) { transform: rotate(270deg); top: 100px; left: 0px; }
+        .petal:nth-child(11) { transform: rotate(300deg); top: 60px; left: 20px; }
+        .petal:nth-child(12) { transform: rotate(330deg); top: 25px; left: 60px; }
+
+        /* Centro de la flor más grande y centrado */
+        .center {
+            position: absolute;
+            top: 135px;
+            left: 40px;
+            width: 270px;
+            height: 270px;
+            background-color: #6b4226;
+            border-radius: 50%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Tallo */
+        .stem {
+            position: relative;
+            background-color: #228b22;
+            width: 20px;
+            height: 0; /* Comienza sin tallo */
+            margin: 0 auto;
+            border-radius: 10px;
+            top: 35px;
+            left:25px;
+            transition: height 3s ease-in-out; /* Tallo crece en 3 segundos */
+            z-index: 0; /* Asegurarse que el tallo esté detrás */
+            display: none; /* Ocultar el tallo al principio */
+        }
+
+        /* Animación de balanceo */
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-2deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Para YESICA, mil flores amarillas 🌻</h1>
+
+    <h2>
+        Como esta flor siempre sigue la luz del sol, yo sigo tu brillo aunque estes a varios kilometros lejos de mi.
+    </h2>
+        <p>Aunque te conozca hace nada solamente desde la lejanía, tengo mil y una cosas para decirte, pero agradezco a Dios y al universo haberme puesto en tu camino de alguna manera, yo se que en algun momento se nos va a dar y nos vamos a conocer solo hay que esperar un momento.. Yo se que no soy el mejor expresandome en palabras pero quiero que sepas que este 21 de Septiembre no estas sola porque yo soy alguien que ve tu brillo aunque apenas te conozca y se que cualquiera que se cruce en tu camino vos lo iluminas con esa hermosa sonrisa que te caracteriza, tenes grandes sueños por cumplir y yo voy a estar siempre acá para vertelos cumplir y festejar con vos, sos la modelo más hermosa que ví en mí vida, jaja "era la única que conocía" te veo grande y fuerte, podes derrotar a cualquiera que se te cruce en tu camino solamente tenes que tener fé, las cosas solamente se logran dando todo de sí así que nunca dejes de brillar y nunca bajes los brazos, los dos sabemos que sos capaz de cualquier cosa y bueno que estas flores amarillas que te dedique tal vez no sea mucho pero solo quería tener un lindo gesto con vos ❤️    </p>  
+
+    <!-- Botón para mostrar la flor -->
+    <button id="showFlowerBtn">PARA YESICA ❤️</button>
+
+    <div class="sunflower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+    </div>
+
+    <div class="stem"></div>
+
+    <!-- Contenedor de imágenes -->
+    <div class="image-container">
+        <img src="image/img1.jpeg" alt="Imagen 1">
+        <img src="image/img2.jpeg" alt="Imagen 2">
+        <img src="image/img3.jpeg" alt="Imagen 3">
+    </div>
+
+    <!-- Archivo de música -->
+    <audio id="sunflowerSong" src="TheClimb.mp3"></audio>
+
+    <script>
+        document.getElementById('showFlowerBtn').addEventListener('click', function() {
+            // Mostrar el texto
+            document.querySelector('h1').style.display = 'block';
+            document.querySelector('p').style.display = 'block';
+            document.querySelector('h2').style.display = 'block';
+
+            // Mostrar la flor y el tallo con crecimiento animado
+            document.querySelector('.sunflower').style.display = 'inline-block';
+            document.querySelector('.stem').style.display = 'block';
+
+            // Iniciar la animación de crecimiento
+            setTimeout(() => {
+                document.querySelector('.sunflower').style.width = '300px';
+                document.querySelector('.sunflower').style.height = '300px';
+                document.querySelector('.sunflower').style.opacity = 1;
+                document.querySelector('.stem').style.height = '300px'; // Crece el tallo
+                document.querySelector('.stem').style.opacity = 1;
+            }, 100);
+
+            // Mostrar las imágenes
+            const images = document.querySelectorAll('.image-container img');
+            images.forEach((img, index) => {
+                setTimeout(() => {
+                    img.style.display = 'block';
+                    img.style.opacity = 1;
+                }, index * 300); // Cada imagen aparecerá con un retraso
+            });
+
+            // Desaparecer el botón
+            this.style.display = 'none';
+
+            // Reproducir la canción
+            var audio = document.getElementById('sunflowerSong');
+            audio.play();
+        });
+    </script>
+
+</body>
+</html>
